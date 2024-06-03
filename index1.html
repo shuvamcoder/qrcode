@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script&gt;
+    </head>
+  <body>
+    <select id='dropdown'>
+      <option value='URL'> URL </option>
+      <option value='Phone'> Phone </option>
+      <option value='Email'> Email </option>
+      <option value='SMS'> SMS </option>
+      </select>
+   
+    <input id='text'>
+    <button onclick='code()'> Generate QR Code</button>
+    <div id='qrCode'>
+       
+    </div>
+    <script>
+      function code()
+      {
+        var text = document.getElementById('text').value;
+        var qrCodeVAR = document.getElementById('qrCode');
+        qrCodeVAR.innerHTML = '';
+        var qr = qrcode(0, 'L');
+        qr.addData(text);
+        qr.make();
+        var imgTag = qr.createImgTag();
+        qrCodeVAR.innerHTML = imgTag;
+      }
+    </script>
+  </body>
+</html>
